@@ -1,0 +1,416 @@
+<html>
+<head>
+    <title>Belajar WebGIS</title>
+    <!-- LEAFLET CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map{
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+    </head>
+<body>
+    <div id="map"></div>
+</body>
+</html>
+<!-- LEAFLET JAVASCRIPT -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+    <!-- LOKASI KAJIAN -->
+    var map = L.map('map').setView([-5.367016, 105.317890], 15);
+    <!-- BASEMAP OPENSTREETMAP -->
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+     });
+     osm.addTo(map);
+     <!-- BASEMAP ESRI -->
+var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+Esri_WorldImagery.addTo(map);
+<!-- POSISI EMBUNG A ITERA -->
+//L.marker([-5.3598371, 105.3137227]).addTo(map);
+<!-- POSISI GEDUNG GKU 2 ITERA -->
+//L.marker([-5.360612, 105.313633]).addTo(map);
+<!-- POSISI GEDUNG F ITERA -->
+//L.marker([-5.361787, 105.313678]).addTo(map);
+<!-- BUNDARAN YANG SERING SAYA LANGGAR ATURAN SAAT BERLALU LINTAS DI ITERA -->
+var bundaran = L.circle([ -5.363156, 105.312634], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 30
+}).addTo(map);
+<!-- BUNDARAN INI JUGA SERING SAYA LANGGAR SETELAH SELESAI KULIAH DI GKU 2 -->
+var bundaran = L.circle([-5.360813, 105.314847], {
+    color: 'green',
+    fillColor: '#ffffff',
+    fillOpacity: 0.5,
+    radius: 50
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG F -->
+var polygon = L.polygon([
+    [-5.359799, 105.315831],
+    [-5.359957, 105.315831],
+    [-5.359957, 105.315571],
+    [-5.360474, 105.315571],
+    [-5.360474, 105.315401],
+    [-5.359635, 105.315401],
+    [-5.359635, 105.315571],
+    [-5.359799, 105.315571]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Asrama 1 -->
+var polygon = L.polygon([
+[-5.359070050, 105.318777061],
+[-5.359070050, 105.319375385],
+[-5.359185568, 105.319382210],
+[-5.359181038, 105.318790711],
+[-5.359070050, 105.318777061]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Asrama 2 -->
+var polygon = L.polygon([
+[-5.358374680, 105.319197934],
+[-5.358365618, 105.319691608],
+[-5.358542292, 105.319700708],
+[-5.358540028, 105.319204759],
+[-5.358374680, 105.319197934]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Asrama 3 -->
+var polygon = L.polygon([
+[-5.358390535, 105.318203762],
+[-5.358381475, 105.318686061],
+[-5.358542294, 105.318692886],
+[-5.358546824, 105.318228787],
+[-5.358390535, 105.318203762]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Asrama 4 -->
+var polygon = L.polygon([
+[-5.359076580, 105.317179246],
+[-5.359073530, 105.317782696],
+[-5.359197047, 105.317773506],
+[-5.359209247, 105.317185372],
+[-5.359076580, 105.317179246]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Asrama 5 -->
+var polygon = L.polygon([
+[-5.358321754, 105.317191500],
+[-5.358321754, 105.317709179],
+[-5.358500167, 105.317707648],
+[-5.358504742, 105.317183842],
+[-5.358321754, 105.317191500]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Gedung A -->
+var polygon = L.polygon([
+[-5.357725834, 105.314337192],
+[-5.357726748, 105.314512440],
+[-5.358068405, 105.314515193],
+[-5.358071146, 105.314334439],
+[-5.357725834, 105.314337192]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Gedung B -->
+var polygon = L.polygon([
+[-5.357731289, 105.315243969],
+[-5.357733027, 105.315249204],
+[-5.357725207, 105.315415003],
+[-5.358070125, 105.315424602],
+[-5.358077944, 105.315246586],
+[-5.357731289, 105.315243969],
+[-5.357731289, 105.315243969]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Gedung C dan D -->
+var polygon = L.polygon([
+[-5.358324757, 105.313331453],
+[-5.358310018, 105.314148129],
+[-5.358467735, 105.314003697],
+[-5.358478559, 105.313564188],
+[-5.358528039, 105.313564188],
+[-5.358528039, 105.313613886],
+[-5.358914601, 105.313609227],
+[-5.359090874, 105.313424415],
+[-5.358545048, 105.313438393],
+[-5.358471186, 105.313441758],
+[-5.358465957, 105.313338457]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Gedung E -->
+var polygon = L.polygon([
+[-5.359616651, 105.315469756],
+[-5.359625256, 105.315639730],
+[-5.359803091, 105.315633968],
+[-5.359800223, 105.315684384],
+[-5.359739988, 105.315700229],
+[-5.359741422, 105.315901893],
+[-5.359896311, 105.315914857],
+[-5.359900614, 105.315700229],
+[-5.359847550, 105.315685824],
+[-5.359847550, 105.315628206],
+[-5.359947941, 105.315626766],
+[-5.359950810, 105.315654134],
+[-5.360114303, 105.315657015],
+[-5.360111435, 105.315615242],
+[-5.360438423, 105.315619564],
+[-5.360435555, 105.315469756],
+[-5.360115738, 105.315462554],
+[-5.359893443, 105.315461113],
+[-5.359616651, 105.315469756]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  GKU 1 -->
+var polygon = L.polygon([
+[-5.360812186, 105.309989501],
+[-5.360808420, 105.311003355],
+[-5.361017460, 105.311007139],
+[-5.361030643, 105.309987609],
+[-5.360812186, 105.309989501]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  GSG -->
+var polygon = L.polygon([
+[-5.362221487, 105.318852586],
+[-5.362224139, 105.319047056],
+[-5.362621986, 105.319047056],
+[-5.362623312, 105.318844594],
+[-5.362221487, 105.318852586]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Kantin BKL-->
+var polygon = L.polygon([
+[-5.357506166, 105.316345989],
+[-5.357503696, 105.316647810],
+[-5.357702934, 105.316657733],
+[-5.357711990, 105.316360873],
+[-5.357605785, 105.316360873],
+[-5.357616488, 105.316267432],
+[-5.357656006, 105.316255856],
+[-5.357651889, 105.316223606],
+[-5.357529218, 105.316216164],
+[-5.357526748, 105.316332758]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Kantin Rumah Kayu-->
+var polygon = L.polygon([
+[-5.359279966, 105.312459369],
+[-5.359266913, 105.312829071],
+[-5.359615420, 105.312843492],
+[-5.359620641, 105.312405617],
+[-5.359410493, 105.312387263],
+[-5.359401356, 105.312435771],
+[-5.359279966, 105.312459369]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  LABTEK 2-->
+var polygon = L.polygon([
+[-5.361426223, 105.309993232],
+[-5.361426223, 105.311013971],
+[-5.361612540, 105.311004520],
+[-5.361616305, 105.309993232],
+[-5.361426223, 105.309993232]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  LABTEK OZT-->
+var polygon = L.polygon([
+[-5.361949908, 105.310347299],
+[-5.361952903, 105.311004613],
+[-5.362141596, 105.311001605],
+[-5.362143094, 105.310356324],
+[-5.361949908, 105.310347299],
+[-5.361949908, 105.310347299]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  LABTEK 1-->
+var polygon = L.polygon([
+[-5.360200847, 105.309999008],
+[-5.360199033, 105.310501866],
+[-5.360416711, 105.310516442],
+[-5.360425781, 105.309997186],
+[-5.360200847, 105.309999008]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  LABTEK 3-->
+var polygon = L.polygon([
+[-5.360166478, 105.308811455],
+[-5.360171921, 105.309458249],
+[-5.360420436, 105.309463715],
+[-5.360420436, 105.308811455],
+[-5.360166478, 105.308811455]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Masjid At-Tanwir-->
+var polygon = L.polygon([
+[-5.356584634, 105.318752598],
+[-5.356716516, 105.319009668],
+[-5.356979301, 105.318886038],
+[-5.356888450, 105.318664291],
+[-5.356825928, 105.318690783],
+[-5.356802483, 105.318652517],
+[-5.356584634, 105.318752598]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Poli Klinik ITERA-->
+var polygon = L.polygon([
+[-5.357657178, 105.315922907],
+[-5.357656110, 105.315954008],
+[-5.357684940, 105.315960443],
+[-5.357683872, 105.316006560],
+[-5.357778905, 105.316016212],
+[-5.357778905, 105.315931486],
+[-5.357664652, 105.315922907]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Masjid Baitul Ilmi->
+var polygon = L.polygon([
+[-5.358934069, 105.312572115],
+[-5.359016301, 105.312762210],
+[-5.359204260, 105.312673062],
+[-5.359124638, 105.312472479],
+[-5.358934069, 105.312572115]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  Gedung F->
+var polygon = L.polygon([
+[-5.361291499, 105.313328998],
+[-5.361291499, 105.313658506],
+[-5.361264494, 105.313661520],
+[-5.361261493, 105.313831297],
+[-5.361288499, 105.313833306],
+[-5.361279496, 105.314136695],
+[-5.361443530, 105.314140714],
+[-5.361450532, 105.313985001],
+[-5.361502542, 105.313988014],
+[-5.361506543, 105.314046281],
+[-5.361701583, 105.314047286],
+[-5.361715585, 105.313887555],
+[-5.361500542, 105.313879518],
+[-5.361498541, 105.313929748],
+[-5.361454532, 105.313928743],
+[-5.361452532, 105.313841343],
+[-5.361462534, 105.313668552],
+[-5.361442530, 105.313662525],
+[-5.361450532, 105.313459596],
+[-5.361456533, 105.313327993],
+[-5.361291499, 105.313328998]
+]).addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG GKU 2 -->
+    var GKU2 = L.marker([-5.360612, 105.313633]);
+    var namagku2 = GKU2.bindPopup("Gedung GKU 2").openPopup()
+    namagku2.addTo(map);
+    <!-- MENAMPILKAN NAMA GEDUNG F ITERA -->
+    var FITERA = L.marker([-5.361787, 105.313678]);
+    var namaF = FITERA.bindPopup("Gedung F ITERA").openPopup()
+    namaF.addTo(map);
+    <!-- MENAMPILKAN NAMA EMBUNG A ITERA -->
+    var EMBUNG = L.marker([-5.3598371, 105.3137227]);
+    var namaEMBUNG = EMBUNG.bindPopup("Embung A ITERA").openPopup()
+    namaEMBUNG.addTo(map);
+    <!-- MENAMPILKAN NAMA Asrama 1 -->
+    var Asrama = L.marker([-5.359070050, 105.318777061]);
+    var namaAsrama = Asrama.bindPopup("Asrama 1").openPopup()
+    namaAsrama.addTo(map);
+    <!-- MENAMPILKAN NAMA Asrama 2 -->
+    var Asrama2 = L.marker([-5.358374680, 105.319197934]);
+    var namaAsrama2 = Asrama2.bindPopup("Asrama 2").openPopup()
+    namaAsrama2.addTo(map);
+    <!-- MENAMPILKAN NAMA Asrama 3 -->
+    var Asrama3 = L.marker([-5.358390535, 105.318203762]);
+    var namaAsrama3 = Asrama3.bindPopup("Asrama 3").openPopup()
+    namaAsrama3.addTo(map);
+    <!-- MENAMPILKAN NAMA Asrama 4 -->
+    var Asrama4 = L.marker([-5.359076580, 105.317179246]);
+    var namaAsrama4 = Asrama4.bindPopup("Asrama 4").openPopup()
+    namaAsrama4.addTo(map);
+    <!-- MENAMPILKAN NAMA Asrama 5 -->
+    var Asrama5 = L.marker([-5.358321754, 105.317191500]);
+    var namaAsrama5 = Asrama5.bindPopup("Asrama 5").openPopup()
+    namaAsrama5.addTo(map);
+    <!-- MENAMPILKAN NAMA Gedung A -->
+    var GedungA = L.marker([-5.357725834, 105.314337192]);
+    var namaGedungA = GedungA.bindPopup("Gedung A").openPopup()
+    namaGedungA.addTo(map);
+    <!-- MENAMPILKAN NAMA Gedung B -->
+    var GedungB = L.marker([-5.357731289, 105.315243969]);
+    var namaGedungB = GedungB.bindPopup("Gedung B").openPopup()
+    namaGedungB.addTo(map);
+    <!-- MENAMPILKAN NAMA Gedung C dan D -->
+    var GedungCD = L.marker([-5.358324757, 105.313331453]);
+    var namaGedungCD = GedungCD.bindPopup("Gedung C dan D").openPopup()
+    namaGedungCD.addTo(map);
+    <!-- MENAMPILKAN NAMA Gedung E-->
+    var GedungE = L.marker([-5.359616651, 105.315469756]);
+    var namaGedungE = GedungE.bindPopup("Gedung E").openPopup()
+    namaGedungE.addTo(map);
+    <!-- MENAMPILKAN NAMA Gedung F-->
+    var GedungF = L.marker([-5.361291499, 105.313328998]);
+    var namaGedungF = GedungF.bindPopup("Gedung F").openPopup()
+    namaGedungF.addTo(map);
+    <!-- MENAMPILKAN NAMA GKU 1-->
+    var GKU1 = L.marker([-5.360812186, 105.309989501]);
+    var namaGKU1 = GKU1.bindPopup("GKU 1").openPopup()
+    namaGKU1.addTo(map);
+    <!-- MENAMPILKAN NAMA GSG-->
+    var GSG = L.marker([-5.362221487, 105.318852586]);
+    var namaGSG = GSG.bindPopup("GSG").openPopup()
+    namaGSG.addTo(map);
+    <!-- MENAMPILKAN NAMA Kantin BKL-->
+    var KantinBKL = L.marker([-5.357506166, 105.316345989]);
+    var namaKantinBKL = KantinBKL.bindPopup("Kantin BKL").openPopup()
+    namaKantinBKL.addTo(map);
+    <!-- MENAMPILKAN NAMA Kantin Rumah Kayu-->
+    var KantinRumahKayu = L.marker([-5.359279966, 105.312459369]);
+    var namaKantinRumahKayu = KantinRumahKayu.bindPopup("Kantin Rumah Kayu").openPopup()
+    namaKantinRumahKayu.addTo(map);
+    <!-- MENAMPILKAN NAMA LABTEK 2-->
+    var LABTEK2 = L.marker([-5.361426223, 105.3099932329]);
+    var namaLABTEK2 = LABTEK2.bindPopup("LABTEK 2").openPopup()
+    namaLABTEK2.addTo(map);
+    <!-- MENAMPILKAN NAMA LABTEK OZT-->
+    var LABTEKOZT = L.marker([-5.361949908, 105.310347299]);
+    var namaLABTEKOZT = LABTEKOZT.bindPopup("LABTEK OZT").openPopup()
+    namaLABTEKOZT.addTo(map);
+    <!-- MENAMPILKAN NAMA LABTEK 1-->
+    var LABTEK1 = L.marker([-5.360200847, 105.309999008]);
+    var namaLABTEK1 = LABTEK1.bindPopup("LABTEK 1").openPopup()
+    namaLABTEK1.addTo(map);
+    <!-- MENAMPILKAN NAMA LABTEK 3-->
+    var LABTEK3 = L.marker([-5.360166478, 105.308811455]);
+    var namaLABTEK3 = LABTEK3.bindPopup("LABTEK 3").openPopup()
+    namaLABTEK3.addTo(map);
+    <!-- MENAMPILKAN NAMA MSJD AT-->
+    var MSJDAT = L.marker([-5.356584634, 105.318752598]);
+    var namaMSJDAT = MSJDAT.bindPopup("MSJD AT").openPopup()
+    namaMSJDAT.addTo(map);
+    <!-- MENAMPILKAN NAMA MSJD BI-->
+    var MSJDBI = L.marker([-5.358934069, 105.312572115]);
+    var namaMSJDBI = MSJDBI.bindPopup("MSJD BI").openPopup()
+    namaMSJDBI.addTo(map);
+    <!-- MENAMPILKAN NAMA PK ITERA-->
+    var PKITERA = L.marker([-5.357657178, 105.315922907]);
+    var namaPKITERA = PKITERA.bindPopup("PK ITERA").openPopup()
+    namaPKITERA.addTo(map);
+    var baseMaps = {
+	"OSM":osm,
+	"ESRI":Esri_WorldImagery,
+};
+var overlayMaps = {
+	"GKU 2" : GKU2,
+    "Gedung F": FITERA,
+    "Bundaran F": EMBUNG,
+    "Asrama 1": Asrama,
+    "Asrama 2": Asrama2,
+    "Asrama 3": Asrama3,
+    "Asrama 4": Asrama4,
+    "Asrama 5": Asrama5,
+    "Gedung A": GedungA,
+    "Gedung B": GedungB,
+    "Gedung C dan D": GedungCD,
+    "Gedung E": GedungE,
+    "Gedung F": GedungF,
+    "GKU 1": GKU1,
+    "GSG": GSG,
+    "Kantin BKL": KantinBKL,
+    "Kantin Rumah Kayu": KantinRumahKayu,
+    "LABTEK 2": LABTEK2,
+    "LABTEK OZT": LABTEKOZT,
+    "LABTEK 1": LABTEK1,
+    "LABTEK 3": LABTEK3,
+    "MSJD AT": MSJDAT,
+    "MSJD BI": MSJDBI,
+    "PK ITERA": PKITERA,
+    //"Bundaran GKU": bundaranGKU,
+    //"Gedung E": polygon,
+};
+map.removeLayer(GKU2)
+map.removeLayer(FITERA)
+map.removeLayer(EMBUNG)
+//map.removeLayer(bundaranGKU)
+//map.removeLayer(polygon)
+L.control.layers(baseMaps,overlayMaps, {collapsed : false}).addTo(map);
+</script>
+</script>
